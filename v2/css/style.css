@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=EB+Garamond:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap');
+
+:root {
+    --gray: rgb(80,80,80);
+    --bkg: rgb(250, 218, 222);
+    --bkglight: rgb(255, 241, 243);
+    --map: rgb(213, 213, 213);
+}
+
+body {
+    background-color: var(--bkg);
+    color: var(--gray);
+    border-color: var(--gray);
+}
+
+h1, h3, h4 {
+    font-family: 'Berkshire Swash', cursive;
+}
+h2, li, p, figcaption {
+    font-family: 'EB Garamond', serif;
+}
+h1 {
+    text-align: center;
+    padding-top: 90px;
+    margin-top: 0;
+    margin-bottom: 45px;
+    font-size: 80px;
+    letter-spacing: 0.05em;
+    padding-bottom: 40px;
+}
+h2 {
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 55px;
+}
+h3 {
+    font-size: 28px;
+    left: 20px;
+    position: absolute;
+}
+h4 {
+    font-size: 28px;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+}
+p {
+    font-size: 24px;
+}
+figcaption {
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+header {
+    /* background-color: white; */
+    background-color: var(--bkglight);
+}
+
+section:not(.full-width) {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 10px 15px 60px ;
+}
+.margenes {
+    display: flex;
+    flex-flow: row nowrap;
+}
+.margenes p {
+    font-weight: bold;
+    border: 1px solid var(--gray);
+    padding: 25px 30px;
+    margin-right: 10px;
+}
+.obras {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+.obras img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.mug {
+    display: flex;
+}
+.mug img {
+    width: 225px;
+    height: auto;
+    border-radius: 50%;
+    border: 1px solid var(--gray);
+    padding: 10px;
+    background-color: var(--bkg);
+}
+.mug p {
+    font-size: 20px;
+    margin-left: 25px;
+    line-height: 1.35em;
+}
+.mug p:first-letter {
+    font-family: 'Berkshire Swash', cursive;
+    float: left;
+    font-size: 4rem;
+    line-height: 0.4;
+    margin: 0.1em 0.2em 0.2em 0;
+}
+
+.holder {
+    /* Clip edges, as some of the lines don't terminate nicely. */
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-top: -80px;
+    z-index: -1;
+}
+
+.ellipse {
+    position: absolute;
+    background: radial-gradient(ellipse, transparent, transparent 7px, var(--gray) 7px, var(--gray) 10px, transparent 11px);
+    background-size: 36px 40px;
+    width: 90%;
+    margin-left: 13%;
+    height: 20px;
+}
+
+.ellipse2 {
+    top: 20px;
+    left: 18px;
+    background-position: 0px -20px;
+}
+
+/* scrolly graphic styles */
+.full-width { /* full width container */
+    margin: 2.0em 0;
+    background-color: var(--bkglight);
+}
+.scrolly  {
+    position: relative;
+    height: 3050vh;
+}
+.scrolly .col-md-12 { /* remove default bootstrap padding */
+    padding: 0;
+}
+.row.scrolly { /* remove default bootstrap margin */
+    margin: 0;
+}
+.scrolly img {
+    background-position: top center;
+}
+.graphic {
+    height: 100vh;
+    /* background-color: rgba(0,0,0,.25); */
+    /* border-top: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray); */
+    position: sticky;
+    display: block;
+    top: 0;
+    overflow: hidden;
+}
+.arrow { /* arrow pointing down to scroll more */
+    position: absolute;
+    color: var(--gray);
+    bottom: 35px;
+    z-index: 100;
+    display: block;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    transition: 1s opacity ease;
+}
+.arrow p {
+    font-family: Lato, sans-serif;
+    font-style: italic;
+    letter-spacing: .05em;
+    font-weight: lighter;
+    margin-bottom: .1em ; 
+}
+.arrow i {
+    animation: bob 1s ease infinite;
+}
+@keyframes bob {
+    0% { transform: none }
+    50% { transform: translateY(3px); }
+    100% { transform: translateY(0); }
+}
+.label {
+    position: absolute;
+    font-family: 'Berkshire Swash', cursive;
+    margin: 0;
+    font-size: 20px;
+    z-index: 4;
+}
+svg {
+    z-index: 100;
+    position: absolute;
+}
+svg#paris, 
+svg#cienfuegos, 
+svg#havana, 
+svg#tenerife {
+    opacity: 0;
+    transition: opacity 1s;
+}
+svg.mapa {
+    fill: none;
+    transition: stroke 1s, stroke-width 1s;
+}
+svg.mapa path {
+    fill: rgb(213, 213, 213);
+    stroke: none;
+    stroke-miterlimit: 0;
+    transition: stroke 1s, stroke-width 1s, fill 1s;
+}
+path {
+    transition: opacity 1s;
+}
+.graphic .image { /* divs with background images set */
+    background-size: cover;
+    position: absolute;
+    background-color: rgba(238, 238, 238, 0.329);
+    background-image:url('images/mapa-01.svg');
+    background-position: center center;
+    width: 100%;
+    height: 100vh;
+    display: block;
+    transition: .5s all ease;
+}
+.step { /* div to trigger scrolling effect */
+    background-color: rgba(41, 41, 41, 0.1);
+    min-height: 1px;
+    width: 400px;
+    padding: 25px 30px;
+    position: relative;
+    z-index: 2000;
+    margin: 20vh auto 130vh;
+}
+.step.photo {
+    padding: 0;
+    width: 750px;
+    background-color: rgba(41, 41, 41, 0.1);
+}
+.step.photo img {
+    width: 100%;
+    box-shadow: 1px 0 15px rgba(0, 0, 0, 0.144);
+}
+.step p {
+    margin: 0;
+    font-size: 30px;
+}
+p.caption {
+    font-size: 20px;    
+    padding: 0 10px 5px 10px;
+    text-align: center;
+}  
+p.year {
+    display: flex;
+    justify-content: center;
+    flex-flow: row nowrap;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+p.year:before,
+p.year:after {
+    content: "";
+    height: 1px;
+    width: 55px;
+    background-color: var(--gray);
+}
+p.year:before {
+    margin-right: 6px;
+}
+p.year:after {
+    margin-left: 8px;
+}
+.step.quote {
+    background-color: white;
+    width: 700px;
+}
+p.quote,
+p.attribution {
+    width: 500px;
+    margin: 40px auto 30px;
+}
+p.quote {
+    font-size: 35px;
+    font-style: italic;
+    position: relative;
+}
+p.quote:before {
+    content: '“';
+    font-size: 90px;
+    font-style: initial;
+    position: absolute;
+    top: -22px;
+    left: -32px;
+}
+p.attribution {
+    text-align: right;
+    margin-top: 0;
+}
+.step:first-child { /* start first scrolling effect faster */
+    margin-top: 0;
+}
+
+li {
+    font-size: 24px;
+}
+figure {
+    margin: 0;
+}
+
+footer {
+    height: 60px;
+    text-align: center;
+}
+
+.helper {
+    background-color: red;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    z-index: 3000;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+    .helper {
+      background-color: orange;
+    }
+
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+      .helper {
+        background-color: yellow;
+        color: black !important;
+      }
+  }
+  
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    .helper {
+      background-color: green;
+      color: white !important;
+    }
+
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    .helper {
+      background-color: blue;
+    }
+  }
